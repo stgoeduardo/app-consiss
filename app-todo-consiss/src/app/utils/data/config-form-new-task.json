@@ -1,0 +1,72 @@
+{
+    "data": [
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Título",
+        "tag": "input",
+        "placeholder": "Ingrese un título",
+        "type": "text",
+        "value": "",
+        "attributes": {
+            "disabled": false
+        },
+        "options": [],
+        "validators": [
+          {
+            "type": "required",
+            "value": "",
+            "message": "Este campo es obligatorio"
+          }
+        ]
+      },
+      {
+        "id": "subtitle",
+        "name": "subtitle",
+        "label": "Subtítulo",
+        "tag": "input",
+        "placeholder": "Ingrese un subtítulo",
+        "type": "text",
+        "value": "",
+        "attributes": {
+            "disabled": false
+        },
+        "options": [],
+        "validators": []
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Descripción",
+        "tag": "input",
+        "placeholder": "Ingrese una descripción",
+        "type": "text",
+        "value": "",
+        "attributes": {
+            "disabled": false
+        },
+        "options": [],
+        "validators": [
+          {
+            "type": "required",
+            "value": "",
+            "message": "Este campo es obligatorio"
+          }
+        ]
+      },
+      {
+        "id": "time",
+        "name": "time",
+        "label": "Duración",
+        "tag": "input",
+        "placeholder": "ej. 6 días",
+        "type": "text",
+        "value": "",
+        "attributes": {
+            "disabled": false
+        },
+        "options": [],
+        "validators": []
+      }
+    ]
+  }

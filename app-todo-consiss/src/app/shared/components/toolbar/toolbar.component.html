@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="flex justify-between items-center px-2">
+      <p class="font-bold">ToDo List</p>
+      <div>
+        <ion-button color="light" shape="round" id="popover-button" fill="outline">
+          <ion-icon slot="icon-only" name="people"></ion-icon>
+        </ion-button>
+        <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item [button]="true" [detail]="false" (click)="logout()">Cerrar sesión</ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>

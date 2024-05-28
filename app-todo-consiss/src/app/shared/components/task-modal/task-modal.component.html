@@ -1,0 +1,26 @@
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+    <ion-toolbar>
+        <ion-title>Crear nueva tarea</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeModal()" color="dark" shape="round">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="w-full pr-4">
+        <p class="mx-4 my-4 text-center font-bold text-blue-400">Crea una nueva tarea y dale seguimiento</p>
+        <app-dynamic-form
+          class="w-full"
+          [configForm]="taskConfigForm"
+          textSaveBtn="Crear"
+          (submitForm)="createTask($event)">
+        </app-dynamic-form>  
+      </div>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>

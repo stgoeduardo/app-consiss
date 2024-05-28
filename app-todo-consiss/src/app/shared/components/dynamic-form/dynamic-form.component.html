@@ -1,0 +1,46 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmitForm()">
+  <div class="w-12/12">
+    <ng-container *ngFor="let field of configForm">
+      <ng-container [ngSwitch]="field.tag">
+        <ng-container *ngSwitchCase="'input'">
+          <ng-container [ngSwitch]="field?.type">
+            <ng-container *ngSwitchDefault>
+              <div class="w-full">
+                <ion-item>
+                  <!--ion-label position="floating"> {{ field?.label }} </ion-label-->
+                  <ion-input 
+                    [label]="field?.label"
+                    labelPlacement="floating"
+                    [type]="field?.type"
+                    [formControlName]="field?.name"
+                    [placeholder]="field?.placeholder"
+                    [readonly]="field?.attributes?.readonly"
+                    [maxlength]="field?.attributes?.maxlength"
+                    [minlength]="field?.attributes?.minlength"
+                    [max]="field?.attributes?.max"
+                    [min]="field?.attributes?.min"
+                    [pattern]="field?.attributes?.pattern">
+                  </ion-input>
+                </ion-item>
+                <div class="px-4 mx-0.5" *ngFor="let validator of field.validators">
+                  <span
+                      *ngIf="
+                          formGroup.get(field?.name)?.touched &&
+                          formGroup.get(field?.name)?.hasError(validator.type)
+                      "
+                      class="text-xs text-red-400">
+                      {{ validator.message }}
+                  </span>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="py-8 flex justify-center items-center" *ngIf="textSaveBtn !== ''">
+    <ion-button type="submit"> {{ textSaveBtn }} </ion-button>
+  </div>
+  <!--ion-button size="small" fill="outline">Outline</ion-button-->
+</form>

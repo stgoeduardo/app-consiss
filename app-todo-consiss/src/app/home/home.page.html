@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="w-full h-full">
+    <div class="mt-12">
+      <h1 class="mt-4 mb-6 px-4 font-bold">Lista de tareas {{ username !== '' ? ' de ' + username : '' }} </h1>
+      <ion-list [inset]="true" *ngIf="tasks.length; else emptyTasks">
+        <ion-item-sliding *ngFor="let task of tasks">
+          <ion-item [button]="true">
+            <ion-icon
+              [color]="task.status ? 'success' : 'danger'"
+              slot="start"
+              [name]="task.status ? 'checkmark-circle-outline' : 'rocket-outline'"
+              size="large">
+            </ion-icon>
+            <div class="flex flex-col mt-2">
+              <ion-label><span class="text-base"> {{ task.title }} </span></ion-label>
+              <span class="text-xs text-gray-500 pb-2"> {{ task.subtitle }} </span>
+            </div>
+            <ion-note slot="end" (click)="setOpen({status: true}, 'detail-task', task)">
+              <span class="text-sm"> {{ task.createdAt | date: 'dd/MM/yyyy' }} </span>
+            </ion-note>
+          </ion-item>
+          <ion-item-options slot="end">
+            <ion-item-option (click)="preDelete(task)" color="danger" expandable="true">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+      <ng-template #emptyTasks>
+        <p class="text-center text-sm my-16 font-bold text-red-700">Por el momento no hay tareas, crea una tarea dando tap a +</p>
+      </ng-template>
+    </div>
+  </div>
+  
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="setOpen({status: true}, 'new-task')">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <app-modal-detail
+    [detail]="detailTask"
+    [isModalOpen]="isDetailModalOpen"
+    (close)="setOpen($event, 'detail-task')"></app-modal-detail>
+  <app-task-modal
+    [isModalOpen]="isTaskModalOpen"
+    (close)="setOpen($event, 'new-task')"></app-task-modal>
+
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="flex flex-column w-full h-full justify-center items-center">
+    <div class="w-full pr-4">
+      <div class="flex justify-center py-8">
+        <img src="assets/icon/todo.png" width="96" height="96" alt="">
+      </div>
+      <p class="mx-4 mt-4 mb-8 text-center text-2xl text-blue-400 font-bold">Consiss ToDo List</p>
+      <p class="mx-4 my-4 text-center font-bold text-blue-400">Iniciar sesión</p>
+      <app-dynamic-form
+        class="w-full"
+        [configForm]="loginConfigForm"
+        textSaveBtn="Entrar"
+        (submitForm)="login($event)">
+      </app-dynamic-form>  
+      <div class="w-full px-4 text-center">
+        <p class="">¿Aún no tienes cuenta?</p>
+        <p>Regístrate <a routerLink="/auth/register" class="underline">aquí</a></p>
+      </div>
+    </div>
+  </div>
+</ion-content>

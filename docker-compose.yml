@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  api-rest-todo:
+    build:
+      context: ./api-rest-todo
+    container_name: api-rest-todo
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api-rest-todo:/app/api-rest-todo
+      - /app/api-rest-todo/node_modules
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/tododb
+      - JWT_SECRET=1029384756000002858
+    depends_on:
+      - mongo
+
+  app-todo-consiss:
+    build:
+      context: ./app-todo-consiss
+    container_name: app-todo-consiss
+    ports:
+      - "8100:8100"
+    volumes:
+      - ./app-todo-consiss:/app/app-todo-consiss
+      - /app/app-todo-consiss/node_modules
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+
+volumes:
+  mongo-data:

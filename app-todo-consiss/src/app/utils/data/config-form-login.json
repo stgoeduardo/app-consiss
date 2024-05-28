@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "email",
+      "name": "email",
+      "label": "Correo electrónico",
+      "tag": "input",
+      "placeholder": "Ingrese un correo electrónico",
+      "type": "email",
+      "value": "",
+      "attributes": {
+          "disabled": false
+      },
+      "options": [],
+      "validators": [
+        {
+          "type": "required",
+          "value": "",
+          "message": "Este campo es obligatorio"
+        },
+        {
+          "type": "pattern",
+          "value": "[^@]+@[^@]+\\.[a-zA-Z]{2,6}",
+          "message": "Correo electrónico inválido"
+        }
+      ]
+    },
+    {
+      "id": "password",
+      "name": "password",
+      "label": "Contraseña",
+      "tag": "input",
+      "placeholder": "Ingrese su contraseña",
+      "type": "password",
+      "value": "",
+      "attributes": {
+          "disabled": false
+      },
+      "options": [],
+      "validators": [
+        {
+          "type": "required",
+          "value": "",
+          "message": "Este campo es obligatorio"
+        }
+      ]
+    }
+  ]
+}
